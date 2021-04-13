@@ -49,27 +49,29 @@
         <div class="admin-lock vh100"> 
           <div class="admin-form">
             <div class="logo"><img src="{% static '/assets/images/logo/01.png' %}" alt=""></div>
-            <h4>Chef Sign In</h4>
+            <h4>Chef Sign Up</h4>
             <span>Please enter your user information</span>
             <form method="post" action="{% url 'insert' %}" name="frm">
               {% csrf_token %}
               <input type="hidden" name="role" id="" value="Chef">
               <label><i class="fa fa-user-circle-o"></i></label>
-              <input type="text" placeholder="FirstName" name="fname" onblur="check_fname();"> 
-              <br>
-              <br>
-              <br>
+              <input type="text" placeholder="FirstName" name="fname" required=""
+              title="Please enter only Aplhabet"> 
+              
               <span id="error" style="color: red;"></span>
               <label><i class="fa fa-user-circle-o"></i></label>
-              <input type="text" placeholder="Lastname" name="lname">
+              <input type="text" placeholder="Lastname" name="lname" required="" >
               <label><i class="fa fa-envelope"></i></label>
-              <input type="email" placeholder="Email Address" name="email">
+              <input type="email" placeholder="Email Address" name="email" required>
               <label><i class="fa fa-phone"></i></label>
-              <input type="tel" placeholder="Contact" name="contact">
+              <input type="tel" placeholder="Contact" name="contact" required=""
+              pattern="[7-9]{1}[0-9]{9}"
+              title="Phone number with 7-9 and remaing 9 digit with 0-9"
+              >
               <label><i class="fa fa-unlock-alt"></i></label>
-              <input type="password" placeholder="Password" name="pass">
+              <input type="password" placeholder="Password" name="pass" required>
               <label><i class="fa fa-unlock-alt"></i></label>
-              <input type="password" placeholder="Confirm Password" name="cpass">
+              <input type="password" placeholder="Confirm Password" name="cpass" required>
             
               <button type="submit">sign up</button>
             </form>

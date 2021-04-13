@@ -1,0 +1,81 @@
+{% extends 'app/admin/base1.html' %}
+
+{% block content %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Tables</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                                .
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                DataTable Example
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Master Table Id</th>
+                                                <th>Chef Id</th>
+                                                <th>Chef Firstname</th>
+                                                <th>Chef Lastname</th>
+                                                <th>Chef Email</th>
+                                                <th>Chef Contact</th>
+                                                <th>is_verified</th>
+                                                <th>is_created</th>
+                                                <th>is_updated</th>
+                                                <th>is_active</th>
+                                                <th>Edit</th>
+                                                 <th>Delete</th>   
+                                            </tr>
+                                        </thead>
+                                       {% if key7 %}
+                                        <tbody>
+                                            {% for i in key7 %}
+                                            <tr>
+                                                <td>{{i.user_id.id}}</td>
+                                                <td>{{i.id}}</td>
+                                                <td>{{i.Firstname}}</td>
+                                                <td>{{i.Lastname}}</td>
+                                                <td>{{i.user_id.Email}}</td>
+                                                <td>{{i.Contact}}</td>
+                                                <td>{{i.user_id.is_verfied}}</td>
+                                                <td>{{i.user_id.is_created}}</td>
+                                                <td>{{i.user_id.is_updated}}</td>
+                                                <td>{{i.user_id.is_active}}</td>
+                                                <td>
+                                                    <form action="{% url 'adminchefeditpage' pk=i.user_id.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="cid" id="" value="{{i.user_id.id}}">
+                                                        <input type="submit" name="" id="" value="Edit"> 
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{% url 'admindelete' pk=i.user_id.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="cid" id="" value="{{i.user_id.id}}">
+                                                        <input type="submit" name="" id="" value="Delete"> 
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+{% endblock %}

@@ -1,0 +1,399 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+{% load static %}
+<!-- desktop menu ending here -->
+
+<!-- Page Header Section Start Here -->
+<section class="page-header style-2">
+    <div class="container">
+        <div class="page-title text-center">
+            <h3>veggie tagliatelle bolognese</h3>
+            <ul class="breadcrumb">
+                <li><a href="index-2.html">Home</a></li>
+                <li>Shop Single</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+
+<!-- Popular Home Chef Section Start Here -->
+{% if key4 %}
+<div class="shop-page single padding-tb pb-0">
+    <div class="container">
+        <div class="section-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-12">
+                    <article>
+                        <div class="shop-single">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 col-12">
+                                    <div class="swiper-container gallery-top">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="shop-item">
+                                                    <div class="shop-thumb">
+                                                        <img src="{{MEDIA_URL}}{{key4.Image.url}}" alt="shop-single">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="swiper-container gallery-thumbs">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="shop-item">
+                                                    <div class="shop-thumb">
+                                                        <img src="{{MEDIA_URL}}{{key4.Image.url}}" alt="shop-single">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="shop-single-content">
+                                        <div class="title">
+
+                                            <h5><a href="#">{{key4.Productname}}</a></h5>
+                                            <div class="p-food-group">
+                                                <strong>
+                                                    <a href="{% url 'chefdata' pk=key4.chef_id_id %}">
+                                                        {{key4.chef_id}} <span>Chef Name : {{key4.chef_id.Firstname}}
+                                                            {{key4.chef_id.Lastname}}</a> </span></strong>
+
+                                            </div>
+                                            <div class="rating">
+                                               {% for star in ratings %}
+                                                    <i class="fas fa-star"></i>
+                                               {% endfor %}
+
+                                                <span>(2 Customer Reviews)</span>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <p>{{key4.Detail}}</p>
+                                            <ul>
+                                                <li>Mfg Date : {{key4.Mfgdate}}</li>
+                                                <li>Expiry Date : {{key4.Expirydate}}</li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-xl-4 col-md-5 col-12">
+                    <aside>
+                        <div class="popular-chef-widget">
+                            <div class="food-quyality">
+                                <div class="section-header">
+                                    <p>Availability Stock: {{key4.Status}} <span></span></p>
+                                </div>
+                                <div class="section-wrapper">
+                                    <h5>Price : ${{key4.Price}}</h5>
+
+                                    <form action="{% url 'addtocart' pk=request.session.id %}" method="post">
+                                        {% csrf_token %}
+                                        <p>Quantity</p>
+                                        <label>
+                                            <input type="number" name="qty" value="1">
+                                        </label>
+                                        <input type="hidden" name="pprice" value="{{key4.Price}}">
+                                        <input type="hidden" name="pname" id="" value="{{key4.Productname}}">
+                                        <input type="hidden" name="proid" value="{{key4.id}}">
+                                        <input type="hidden" name="chefid" id="" value="{{key4.chef_id.id}}">
+                                        <button type="submit" class="food-btn style-2">Add To Cart</button>
+                                    </form>
+                                    <ul>
+                                        <li><a href="#"><i class="icofont-heart-alt"></i>Wishlist</a></li>
+                                        <li><a href="#"><i class="icofont-drag2"></i>Compare</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- Popular Home Chef Section Ending Here -->
+
+<!-- Review Section Start Here -->
+<div class="review single padding-tb">
+    <div class="container">
+        <div class="section-wrapper">
+            <div class="related">
+                <ul class="tab-bar">
+                    <li class="tablinks" onclick="openCity(event, 'two')">
+                        <span>Description</span>
+                    </li>
+
+                </ul>
+
+
+                <div id="two" class="tabcontent">
+                    <div class="Description">
+                        <h5>Food Description</h5>
+                        <p>{{key4.ProductDescription}}</p>
+
+                    </div>
+                </div>
+
+                <div id="three" class="tabcontent">
+                    <div class="spe-shop">
+                        <div class="desc">
+                            <p>{{key4.Detail}}</p>
+                            <ul>
+                                <li><b>Product Integrates</b> : {{key4.Integrates}}</li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="four" class="tabcontent">
+                    <div class="section-wrapper">
+                        <div class="review">
+                            <ul class="content">
+                                <li>
+                        </div>
+                        </li>
+                        </ul>
+                        <div class="client-review">
+                            <form action="{% url 'feedback' pk=key4.id %}" method="POST" class="review-form">
+                                {% csrf_token %}
+                                <div class="review-title">
+                                    <font style="color: blue;" ><p>{{msg}}</p></font>
+                                    <h5>Add A Review</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-12">
+                                        <div class="ratings">
+                                            <div class="rating">
+                                                <div id="basic" style="font-size: 2em;"></div>
+                                                <input type="text" readonly id="basicInput" name="rating" class="form-control form-control-sm">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12 ">
+                                        <textarea rows="8" name="description" placeholder="Type Here Message"></textarea>
+                                        <button class="food-btn feedback-submit-button style-2"><span>Submit
+                                            Review</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Review Section Ending Here -->
+
+
+<!-- link area start -->
+<div class="news_link">
+    <div class="container">
+        <div class="order-content">
+            <div class="content-logo">
+                <a href="#">
+                    <img src="assets/images/logo/02.png" alt="logo">
+                    <p>Good Food For Good Helts</p>
+                </a>
+            </div>
+            <div class="content-link">
+                <ul>
+                    <li>
+                        <h5>Work with best resturant theme</h5>
+                    </li>
+                    <li>
+                        <a href="#" class="food-btn style-2">
+                            <span>Order Now</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- link area ends -->
+
+<!-- footer area start -->
+<footer class="padding-tb" style="background-image: url(assets/css/bg-image/footer-bg.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                <div class="contant-info">
+                    <h5>Contact info</h5>
+                    <ul class="info">
+                        <li>
+                            <i class="fas fa-home"></i>
+                            <span>Suite 02 Level Tropical Center</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+880 1234 567890, 025984712</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-globe-asia"></i>
+                                <span>www.foodbuzz@gmail,com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-headphones"></i>
+                                <span>support@codexcoder.com</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                <div class="opening-time">
+                    <h5>Opening Hours</h5>
+                    <ul>
+                        <li>
+                            <p><i class="far fa-clock"></i>Saterday</p>
+                            <span>06:00 am - 08:00 pm</span>
+                        </li>
+                        <li>
+                            <p><i class="far fa-clock"></i>Sunday</p>
+                            <span>09:00 am - 02:00 pm</span>
+                        </li>
+                        <li>
+                            <p><i class="far fa-clock"></i>Monday</p>
+                            <span>07:00 am - 09:00 pm</span>
+                        </li>
+                        <li>
+                            <p><i class="far fa-clock"></i>Tuesday</p>
+                            <span>02:00 am - 06:00 pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                <div class="news_letter">
+                    <h5>Subscribe Newsletter</h5>
+                    <p>
+                        Sign Up For Our Latest News & Articles.
+                        We Wont Give You Spam Mails.
+                    </p>
+                    <div class="contact-search">
+                        <form class="searchForm" method="get" action="http://labartisan.net/demo/foodbuzz/0">
+                            <input class="searchTerm" placeholder="Your Email" autocomplete="off">
+                            <input type="submit" class="searchBtn" value="Subscribe!" />
+                        </form>
+                    </div>
+                    <ul class="follow_us">
+                        <li>
+                            <p>Follow Us : </p>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-wifi"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-globe"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer area ends -->
+
+<!-- footer menu start -->
+<div class="fotter-header">
+    <header>
+        <div class="footer-bg">
+            <div class="container">
+                <div class="header-item">
+                    <div class="header-logo">
+                        <p>&copy; 2020<a href="index-2.html">FoodBuzz</a>Designed by<a
+                                href="https://themeforest.net/user/labartisan">Labartisan</a></p>
+                    </div>
+                    <div class="header-menu d-none d-lg-block">
+                        <nav class="primary-menu">
+                            <div class="main-menu-area">
+                                <ul class="main-menu">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Food Menu</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Shop</a></li>
+                                    <li><a href="#">Elements</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- <div class="footer-bottom"></div> -->
+</div>
+<!-- footer menu ends -->
+
+
+<!-- scrollToTop start here -->
+<a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i></a>
+<!-- scrollToTop ending here -->
+
+
+
+</body>
+
+<!-- Mirrored from labartisan.net/demo/foodbuzz/shop-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 07 Nov 2020 12:13:12 GMT -->
+
+</html>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{% static 'assets/js/star-rating.js' %}"></script>
+<script>
+$("#basic").rating({
+    "click": function (e) {
+        $('.desc-box').removeClass('d-none')
+        console.log(e);
+        $("#basicInput").val(e.stars);
+        
+
+       
+    }
+
+});
+
+
+
+
+</script>
+{% endblock %}

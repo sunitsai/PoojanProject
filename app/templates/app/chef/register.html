@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from wpkixx.com/html/wooble/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jan 2020 10:08:56 GMT -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Web Admin panel</title>
+<link rel="icon" type="image/png" href="{% static '/images/fav.png' %}">
+<link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static '/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/css/line-icons.css' %}">
+<link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/css/color.css' %}">
+<link rel="stylesheet" href="{% static '/css/responsive.css' %}">
+</head>
+<body>
+<!-- Start Page Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+<div class="panel-layout">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="admin-lock vh100"> 
+          <div class="admin-form">
+            <div class="logo"><img src="images/logo2.png" alt=""></div>
+            <h4>Sign Up Account</h4>
+            <span>Please enter your user information</span>
+            <form method="post">
+              <label><i class="fa fa-user-circle-o"></i></label>
+              <input type="text" placeholder="Complete Name">
+              <label><i class="fa fa-envelope"></i></label>
+              <input type="text" placeholder="Email Address">
+              <label><i class="fa fa-unlock-alt"></i></label>
+              <input type="text" placeholder="Password">
+              <label><i class="fa fa-unlock-alt"></i></label>
+              <input type="text" placeholder="Confirm Password">
+              <input type="checkbox" id="checkbox">
+              <label for="checkbox">I accept the <a href="#" title="">terms & Conditions</a></label>
+              <button type="submit">sign up</button>
+            </form>
+            <span>Already a member? <a href="#" title="">Sign in</a></span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static '/js/jquery.js' %}"></script> 
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
+</body>
+
+<!-- Mirrored from wpkixx.com/html/wooble/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jan 2020 10:08:56 GMT -->
+</html>

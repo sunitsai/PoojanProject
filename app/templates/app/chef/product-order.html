@@ -1,0 +1,135 @@
+{% extends 'app/chef/base.html' %}
+
+{% block content %}
+
+            <!-- responsive header -->
+            <div class="panel-body">
+              
+              <div class="content-area">
+                <div class="sub-bar">
+                  <div class="sub-title">
+                    <h4>Dashboard:</h4>
+                    <span>Welcome To web Admin Panel!</span>
+                  </div>
+                  <ul class="bread-crumb">
+                    <li><a href="#" title="">Home</a></li>
+                    <li>Dashbord</li>
+                  </ul>
+                </div>
+
+                <div class="gap no-gap">
+                  <div class="inner-bg">
+                    <div class="element-title">
+                      <h4>Product Orders</h4>
+                    </div>
+                    {% if key4 %}
+                    {% for i in key4 %}
+                    <table class="cart-table table table-responsive">
+                      <thead>
+                        <tr>
+                          <th> ID </th>
+						  <th>Order_Id</th>
+						  <th>customer Email</th>
+						  <th>Date</th>
+                          <th>Amount</th>
+                          
+                      
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{i.id}}</td>
+						  <td>{{i.order_id}}</td>
+						  <td>{{i.made_by.Email}}</td>
+						  <td>{{i.made_on}}</td>
+                          <td>{{i.amount}}</td>
+                          </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  
+                </div>
+              </div>
+              <div class="bottombar"> 
+				<span>© 2019. Dewwater. All Rights Reserved.</span>
+			</div>
+              <!-- bottombar --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="side-panel">
+			<h4 class="panel-title">General Setting</h4>
+			<form method="post">
+				<div class="setting-row">
+					<span>use night mode</span>
+					<input type="checkbox" id="nightmode1"/> 
+					<label for="nightmode1" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Notifications</span>
+					<input type="checkbox" id="switch22" /> 
+					<label for="switch22" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Notification sound</span>
+					<input type="checkbox" id="switch33" /> 
+					<label for="switch33" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>My profile</span>
+					<input type="checkbox" id="switch44" /> 
+					<label for="switch44" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Show profile</span>
+					<input type="checkbox" id="switch55" /> 
+					<label for="switch55" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+			</form>
+			<h4 class="panel-title">Account Setting</h4>
+			<form method="post">
+				<div class="setting-row">
+					<span>Sub users</span>
+					<input type="checkbox" id="switch66" /> 
+					<label for="switch66" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>personal account</span>
+					<input type="checkbox" id="switch77" /> 
+					<label for="switch77" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Business account</span>
+					<input type="checkbox" id="switch88" /> 
+					<label for="switch88" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Show me online</span>
+					<input type="checkbox" id="switch99" /> 
+					<label for="switch99" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Delete history</span>
+					<input type="checkbox" id="switch101" /> 
+					<label for="switch101" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Expose author name</span>
+					<input type="checkbox" id="switch111" /> 
+					<label for="switch111" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+			</form>
+		</div>
+
+</body>
+
+<!-- Mirrored from wpkixx.com/html/wooble/product-order.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jan 2020 10:08:44 GMT -->
+</html>
+{% endblock %}

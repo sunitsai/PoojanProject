@@ -1,0 +1,188 @@
+{% extends 'app/chef/base.html' %}
+
+{% block content %}
+
+            <!-- responsive header -->
+            <div class="panel-body">
+              
+              <div class="content-area">
+                <div class="sub-bar">
+                  <div class="sub-title">
+                    <h4>Dashboard:</h4>
+                    <span>Welcome To web Admin Panel!</span>
+                  </div>
+                  <ul class="bread-crumb">
+                    <li><a href="#" title="">Home</a></li>
+                    <li>Dashbord</li>
+                  </ul>
+                </div>
+                {% if msg %}
+                <strong><p style="color: green;">{{msg}}</p></strong>
+                {% endif %}
+                {% if key6 %} 
+                <form action="{% url 'updateproduct' pk=key6.id  %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="gap no-gap">
+                    <div class="inner-bg">
+                      <div class="element-title">
+                        <h4>about product</h4>
+                        <span>Please fill the form bellow.</span> </div>
+                      <div class="add-prod-from">
+						  <div class="row">
+                <div class="col-md-6">
+                  <label>Chef Id</label>
+                                <input type="text" value="{{request.session.id}}">
+                </div>
+                  <div class="col-md-6">
+                    <label>Chef name</label>
+                                  <input type="text"  value="{{request.session.Firstname}}">
+                  </div>
+                
+							<div class="col-md-6">
+							  <label>product name</label>
+                              <input type="text" name="Productname" value="{{key6.Productname}}">
+							</div>
+							<div class="col-md-6">
+							  <label>Expirydate</label>
+							  <input type="date" placeholder="" name="Expirydate" value="{{key6.Expirydate}}">
+                            </div>
+                            <div class="col-md-6">
+                              <label>Mfgdate</label>
+                              <input type="date" name="Mfgdate" value="{{key6.Mfgdate}}">
+                            </div>
+							<div class="col-md-6">
+							  <label>category</label>
+							  <select name="Category">
+								<option value="">Select Option</option>
+								<option value="">option one</option>
+								<option value="">option two</option>
+								<option value="">option three</option>
+								<option value="">option four</option>
+								<option value="">option five</option>
+							  </select>
+							</div>
+							
+							<div class="col-md-6">
+							  <div class="input-group">
+								<label>price</label>
+								<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+								<input class="form-control" name="Price"  type="text" value="{{key6.Price}}">
+							  </div>
+							</div>
+							<div class="col-md-6">
+							  <div class="input-group">
+								<label>discount</label>
+								<span class="input-group-addon"><i class="fa fa-percent"></i></span>
+								<input class="form-control" name="discount"  type="text" value="{{key6.discount}}">
+							  </div>
+							</div>
+							<div class="col-md-12">
+							  <label>Product Description</label>
+							  <input type="text" cols="30" rows="10" name="ProductDescription" value="{{key6.ProductDescription}}">
+							</div>
+							<div class="col-md-6">
+							  <label>Detail</label>
+							  <input type="text"  name="Detail" value="{{key6.Detail}}">
+							</div>
+							<div class="col-md-6">
+							  <label>status</label>
+							  <input type="text"  name="Status" value="{{key6.Status}}">
+							</div>
+							<div class="col-md-12"> <span class="upload-image">upload image</span>
+							  <label class="fileContainer">
+								<img src="{{MEDIA_URL}}{{key6.Image.url}}" alt="" srcset="" >
+							  </label>
+							</div>
+							<div class="col-md-6">
+                                <label>Keyword</label>
+                                <input type="text" name="Keyword" value="{{key6.Keywords}}">
+                              </div>
+							
+							<div class="col-md-12">
+							  <div class="buttonz">
+								<button type="submit">Update</button>
+								<button type="submit">cancel</button>
+							  </div>
+							</div>
+                      	</div>
+					  </div>	  
+                    </div>
+                </div>
+                </form>
+                {% endif %}
+              </div>
+              <div class="bottombar"> 
+					<span>© 2019. Dewwater. All Rights Reserved.</span>
+				</div>
+              <!-- bottombar --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>   
+<div class="side-panel">
+            <h4 class="panel-title">General Setting</h4>
+            <form method="post">
+                <div class="setting-row">
+                    <span>use night mode</span>
+                    <input type="checkbox" id="nightmode1"/> 
+                    <label for="nightmode1" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Notifications</span>
+                    <input type="checkbox" id="switch22" /> 
+                    <label for="switch22" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Notification sound</span>
+                    <input type="checkbox" id="switch33" /> 
+                    <label for="switch33" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>My profile</span>
+                    <input type="checkbox" id="switch44" /> 
+                    <label for="switch44" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Show profile</span>
+                    <input type="checkbox" id="switch55" /> 
+                    <label for="switch55" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+            </form>
+            <h4 class="panel-title">Account Setting</h4>
+            <form method="post">
+                <div class="setting-row">
+                    <span>Sub users</span>
+                    <input type="checkbox" id="switch66" /> 
+                    <label for="switch66" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>personal account</span>
+                    <input type="checkbox" id="switch77" /> 
+                    <label for="switch77" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Business account</span>
+                    <input type="checkbox" id="switch88" /> 
+                    <label for="switch88" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Show me online</span>
+                    <input type="checkbox" id="switch99" /> 
+                    <label for="switch99" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Delete history</span>
+                    <input type="checkbox" id="switch101" /> 
+                    <label for="switch101" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Expose author name</span>
+                    <input type="checkbox" id="switch111" /> 
+                    <label for="switch111" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+            </form>
+        </div><!-- side panel -->
+{% endblock %}

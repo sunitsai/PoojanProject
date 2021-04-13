@@ -1,0 +1,132 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+{% load static %}
+        {% if key3 %}
+        <!-- Shop Page Section Start Here -->
+		<div class="shop-page single padding-tb bg-fa">
+            <div class="container">
+                <div class="section-wrapper">
+                    <div class="shop-title d-flex flex-wrap justify-content-between">
+                        <p>Showing 01 - 12 of 139 Results</p>
+                        <div class="product-view-mode">
+                            <a class="active" data-target="grid"><i class="icofont-ghost"></i></a>
+                            <a data-target="list"><i class="icofont-listing-box"></i></a>
+                        </div>
+                    </div>
+                    {% for i in key3 %}
+                    <div class="shop-product-wrap grid row">
+                        <div class="col-xl-3 col-md-6 col-12">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <img src="{{MEDIA_URL}}{{i.Image.url}}" alt="food-product">
+                                    <span class="price">{{i.Price}}</span>
+                                    <div class="product-action-link">
+                                        <a href="{{MEDIA_URL}}{{i.Image.url}}" data-rel="lightcase"><i class="icofont-eye"></i></a>
+                                        <a href="#"><i class="icofont-heart-alt"></i></a>
+                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-title">
+                                        <span class="cat-name">Catagory Name</span>
+                                        <h6><a href="{% url 'productdes' pk=i.id %}">{{i.Productname}}</a></h6>
+                                        <div class="rating">
+                                            <i class="icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-list-item">
+                                <div class="product-thumb">
+                                    <img src="{{MEDIA_URL}}{{i.Image.url}}" alt="food-product">
+                                    <div class="product-action-link">
+                                        <a href="{{MEDIA_URL}}{{i.Image.url}}" data-rel="lightcase"><i class="icofont-eye"></i></a>
+                                        <a href="#"><i class="icofont-heart-alt"></i></a>
+                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-title">
+                                        <span class="cat-name">Catagory Name</span>
+                                        <h6><a href="#">{{i.Productname}}</a></h6>
+                                        <span class="price">{{i.Price}}</span>
+                                        <div class="rating">
+                                            <i class="icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                        </div>
+                                        <p>Assertively fabricate process-centric collaboration and idea-sharing whereas focused results. Energistically mesh clicks-and-mortar architectures with market-driven niche markets. Monotonectally redefine integrated technology for diverse intellectual capital. Energistically administrate principle-centered opportunities without customer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                    <div class="paginations">
+                        <ul class="d-flex flex-wrap justify-content-center">
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li class="d-none d-sm-block">
+                                <a href="#">2</a>
+                            </li>
+                            <li class="d-none d-sm-block">
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a class="dot">...</a>
+                            </li>
+                            <li class="d-none d-sm-block">
+                                <a href="#">9</a>
+                            </li>
+                            <li class="d-none d-sm-block">
+                                <a href="#">10</a>
+                            </li>
+                            <li>
+                                <a href="#">11</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- Shop Page Section Ending Here -->
+
+        <!-- link area start -->
+        <div class="news_link">
+            <div class="container">
+                <div class="order-content">
+                    <div class="content-logo">
+                        <a href="#">
+                            <img src="{% static '/assets/images/logo/logo.png' %}" alt="logo">
+                            <p>Good Food For Good Helts</p>
+                        </a>
+                    </div>
+                    <div class="content-link">
+                        <ul>
+                            <li>
+                                <h5>Work with best Chef Products</h5>
+                            </li>
+                            <li>
+                                <a href="{% url 'showproduct' %}" class="food-btn style-2">
+                                    <span>Order Now</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- link area ends -->
+
+
+        
+{% endblock %}
+        

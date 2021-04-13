@@ -1,0 +1,53 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/assets/css/profile.css' %}">
+<script src="{% static '/assets/js/profile.js' %}"></script>
+
+{% if key1 %}
+<div class="form-wrap">
+    <div class="profile"><img src="http://www.wifeo.com/image_design_v3/pictos_gratuits/p/perso_violet.png">
+      <h1>Customer profile</h1>
+    </div>
+    <form method="post" action="{% url 'update' pk=key1.id %}">
+        {% csrf_token %}
+      <div>
+        <label for="name">Firstname</label>
+        <input type="text" name="fname" required value="{{key1.Firstname}}">
+      </div>
+      <div>
+        <label for="name">Lastname</label>
+        <input type="text" name="lname" required value="{{key1.Lastname}}">
+      </div>
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" required value="{{request.session.Email}}">
+      </div>
+      <div>
+        <label for="name">Contact</label>
+        <input type="text" name="contact" required value="{{key1.Contact}}">
+      </div>
+      <div>
+        <label for="name">City</label>
+        <input type="text" name="city" required value="{{key1.City}}">
+      </div>
+      <div>
+        <label for="name">State</label>
+        <input type="text" name="state" required value="{{key1.State}}">
+      </div>
+      <div>
+        <label for="name">Address</label>
+        <input type="text" name="address" required value="{{key1.Address}}">
+      </div>
+     
+      
+      
+       
+      
+           
+          <div class="select-arrow"></div> 
+      
+      <button type="submit">update</button> 
+    </form> 
+    
+  </div>
+  {% endif %}

@@ -1,0 +1,92 @@
+{% extends "app/base.html" %}
+
+{% block content %}       
+{% load static %}
+<!-- Page Header Section Start Here -->
+        <section class="page-header style-2">
+            <div class="container">
+                <div class="page-title text-center">
+                    <h3>Our Best Food Menu</h3>
+                    <ul class="breadcrumb">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li>Food Menu 3</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Page Header Section Ending Here -->
+       
+        <!-- Food Product Section Style 2 Start here -->
+        <section class="product style-2 padding-tb bg-fa">
+            <div class="container">
+                <div class="section-wrapper">
+                    <div class="foodlist-item">
+                        <div class="tab-bar">
+                            <img src="{% static '/assets/images/product/bg/01.jpg' %}" alt="product-bg">
+                        </div>
+                        <div class="tabcontent">
+                            <div class="row no-gutters justify-content-center">
+                                {% if all_cat %}
+                                {% for i in all_cat %}
+                                <div class="col-xl-3 col-md-6 col-12">
+                                    <div class="product-item">
+                                        <div class="product-thumb">
+                                            <img src="{{MEDIA_URL}}{{i.Image.url}}" alt="food-product" width="150" height="150">
+                                            
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-title">
+                                                <span class="cat-name">Chef Name : {{i.chef_id.Firstname}}</span>
+                                                <h6><a href="{% url 'productbycategory' pk=i.id %}">{{i.Productname}}</a></h6>
+                                                <div class="rating">
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </section>
+        <!-- Food Product Section Style 2 Ending here -->
+
+        <!-- link area start -->
+        <div class="news_link">
+            <div class="container">
+                <div class="order-content">
+                    <div class="content-logo">
+                        <a href="#">
+                            <img src="assets/images/logo/02.png" alt="logo">
+                            <p>Good Food For Good Helts</p>
+                        </a>
+                    </div>
+                    <div class="content-link">
+                        <ul>
+                            <li>
+                                <h5>Work with best resturant theme</h5>
+                            </li>
+                            <li>
+                                <a href="#" class="food-btn style-2">
+                                    <span>Order Now</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- link area ends -->
+{% endblock %}

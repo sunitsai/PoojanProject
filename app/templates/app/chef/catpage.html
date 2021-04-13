@@ -1,0 +1,91 @@
+{% extends 'app/chef/base.html' %}
+
+{% block content %}
+            <!-- responsive header -->
+            <div class="panel-body">
+              <div class="content-area">
+                <div class="sub-bar">
+                  <div class="sub-title">
+                    <h4>Dashboard:</h4>
+                    <span>Welcome To web Admin Panel!</span>
+                  </div>
+                  <ul class="bread-crumb">
+                    <li><a href="#" title="">Home</a></li>
+                    <li>Dashbord</li>
+                  </ul>
+                </div>
+                {% if msg %}
+
+                <center><h3 style="color: green;">{{msg}}</h3></center>
+                {% endif %}
+                
+                <form action="{% url 'addcat' pk=request.session.id %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="inner-bg">
+                  
+                  <div class="element-title">
+                    <h4>Add Product Category</h4>
+                     
+				  </div>
+                    <div class="pnl-bdy billing-sec">
+                    	<div class="row">
+                            <div class="col-md-6 col-sm-6 field">
+                                <label>Chef Id <span>*</span> </label>
+        
+                                <input type="text" name="chefid" id="" value="{{request.session.id }}">
+                              </div>
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>Category Name <span>*</span> </label>
+                        <!-- <input type="text" name="catname" onsubmit="setCustomValidity('Please enter at least 5 characters')"> -->
+                        <input id="email" oninvalid="InvalidMsg(this);" 
+                   oninput="InvalidMsg(this);" name="catname" 
+                   type="text" required="required" />
+                        
+                      </div>
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>Category Image <span>*</span> </label>
+
+                        <input type="file" name="catimg" id="">
+                      </div>
+                     
+                     
+                      <div class="col-md-12 col-sm-12">
+                        <button type="submit">Save Settings Now</button>
+                      </div>
+                  </div>
+                    </div>
+                </div>
+              </form>
+                
+              </div>
+              <div class="bottombar"> 
+					<span>© 2019. Dewwater. All Rights Reserved.</span>
+				</div>
+              <!-- bottombar --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+<script> 
+    function InvalidMsg(textbox) { 
+
+        if (textbox.value === '') { 
+            textbox.setCustomValidity 
+                  ('Please Enter the Category'); 
+        } else if (textbox.validity.typeMismatch) { 
+            textbox.setCustomValidity 
+                  ('Please enter an email address which is valid!'); 
+        } else { 
+            textbox.setCustomValidity(''); 
+        } 
+
+        return true; 
+    } 
+</script> 
+{% endblock %}

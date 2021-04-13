@@ -1,0 +1,176 @@
+{% extends 'app/chef/base.html' %}
+
+{% block content %}
+            <!-- responsive header -->
+            <div class="panel-body">
+              <div class="content-area">
+                <div class="sub-bar">
+                  <div class="sub-title">
+                    <h4>Dashboard:</h4>
+                    <span>Welcome To web Admin Panel!</span>
+                  </div>
+                  <ul class="bread-crumb">
+                    <li><a href="#" title="">Home</a></li>
+                    <li>Dashbord</li>
+                  </ul>
+                </div>
+                {% if key2 %}
+                <form action="{% url 'update' pk=key2.id %}" method="post">
+                  {% csrf_token %}
+                <div class="inner-bg">
+                  
+                  <div class="element-title">
+                    <h4>Edit profile</h4>
+                    <span>Edit your profile</span> 
+				  </div>
+                    <div class="pnl-bdy billing-sec">
+                    	<div class="row">
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>FirstName <span>*</span> </label>
+                        <input value="{{key2.Firstname}}" type="text" name="fname">
+                      </div>
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>LastName <span>*</span> </label>
+                        <input value="{{key2.Lastname}}" type="text" name="lname">
+                      </div>
+                      <div class="col-md-6 col-sm-12 field">
+                        <label>contact<span>*</span> </label>
+                        <input placeholder="" type="text" value="{{key2.Contact}}" name="contact">
+                      </div>
+                      <div class="col-md-6 col-sm-12 field">
+                        <label>email<span>*</span> </label>
+                        <input placeholder="" type="text" value="{{request.session.Email}}" name="email">
+                      </div>
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>Gender <span>*</span> </label>
+                        <select name="gender">
+                          
+                          <option>----Select Gender----</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 col-sm-6 field">
+                        <label>City <span>*</span> </label>
+                        <input placeholder="Enter Your City" type="text" value="{{key2.City}}" name="city">
+                      </div>
+                     
+                      <div class="col-md-6 col-sm-12 field">
+                        <label>Ability<span>*</span> </label>
+                        <input placeholder="Enter Ability" type="text" value="{{key2.Ability}}" name="Ability">
+                      </div>
+                      
+                      <div class="col-md-6 col-sm-12 field">
+                        <label>State <span>*</span> </label>
+                        <input placeholder="Enter state" type="text" value="{{key2.State}}" name="state">
+                      </div>
+                      <div class="col-md-6 col-sm-12 field">
+                        <label>ZipCode <span>*</span> </label>
+                        <input value="{{key2.zipcode}}" type="text" name="zipcode">
+                      </div>
+                      <div class="col-md-12 col-sm-12 field">
+                        <label>Address<span>*</span> </label>
+                        <input placeholder="Enter your Address" type="text" value="{{key2.Address}}" name="address">
+                      </div>
+						<div class="col-md-12 col-sm-12 field"> 
+							<span class="upload-image">upload image</span>
+						  <label class="fileContainer"> <span>upload</span>
+							<input type="file">
+						  </label>
+						</div>
+                      <div class="col-md-4 col-sm-6 field">
+                        <label>Social URL <span>*</span> </label>
+                        <input value="{{key2.sociallink}}" type="text" name="sociallink">
+                      </div>
+                      <div class="col-md-4 col-sm-6 field">
+                        <label>web URL <span>*</span> </label>
+                        <input value="{{key2.weblink}}" type="text" name="weblink">
+                      </div>
+                     
+                     
+                      <div class="col-md-12 col-sm-12">
+                        <button type="submit">Save Settings Now</button>
+                      </div>
+                  </div>
+                    </div>
+                </div>
+              </form>
+                {% endif %}
+              </div>
+              <div class="bottombar"> 
+					<span>© 2019. Dewwater. All Rights Reserved.</span>
+				</div>
+              <!-- bottombar --> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side-panel">
+            <h4 class="panel-title">General Setting</h4>
+            <form method="post">
+                <div class="setting-row">
+                    <span>use night mode</span>
+                    <input type="checkbox" id="nightmode1"/> 
+                    <label for="nightmode1" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Notifications</span>
+                    <input type="checkbox" id="switch22" /> 
+                    <label for="switch22" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Notification sound</span>
+                    <input type="checkbox" id="switch33" /> 
+                    <label for="switch33" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>My profile</span>
+                    <input type="checkbox" id="switch44" /> 
+                    <label for="switch44" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Show profile</span>
+                    <input type="checkbox" id="switch55" /> 
+                    <label for="switch55" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+            </form>
+            <h4 class="panel-title">Account Setting</h4>
+            <form method="post">
+                <div class="setting-row">
+                    <span>Sub users</span>
+                    <input type="checkbox" id="switch66" /> 
+                    <label for="switch66" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>personal account</span>
+                    <input type="checkbox" id="switch77" /> 
+                    <label for="switch77" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Business account</span>
+                    <input type="checkbox" id="switch88" /> 
+                    <label for="switch88" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Show me online</span>
+                    <input type="checkbox" id="switch99" /> 
+                    <label for="switch99" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Delete history</span>
+                    <input type="checkbox" id="switch101" /> 
+                    <label for="switch101" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+                <div class="setting-row">
+                    <span>Expose author name</span>
+                    <input type="checkbox" id="switch111" /> 
+                    <label for="switch111" data-on-label="ON" data-off-label="OFF"></label>
+                </div>
+            </form>
+        </div><!-- side panel -->
+  
+</div>
+{% endblock %}

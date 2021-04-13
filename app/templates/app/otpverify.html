@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from wpkixx.com/html/wooble/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jan 2020 10:08:56 GMT -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Customer Login</title>
+<link rel="icon" type="image/png" href="{% static '/chef/images/fav.png' %}">
+<link rel="stylesheet" href="{% static '/chef/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static '/chef/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/chef/css/line-icons.css' %}">
+<link rel="stylesheet" href="{% static '/chef/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/chef/css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static '/chef/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/chef/css/color.css' %}">
+<link rel="stylesheet" href="{% static '/chef/css/responsive.css' %}">
+</head>
+<body>
+<!-- Start Page Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+<div class="panel-layout">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="admin-lock vh100"> 
+          <div class="admin-form">
+            <div class="logo"><img src="{% static '/assets/images/logo/01.png' %}" alt=""></div>
+            <h4>Customer Sign In</h4>
+            <span>Please enter your user information</span>
+            <form method="post" action="{% url 'verifyotp' %}">
+              {% csrf_token %}
+
+              {% if msg %}
+                  <strong><p style="color: red;">{{msg}}</p></strong>     
+              {% endif %}
+              <input type="hidden" name="role" id="" value="Customer">
+              <label><i class="fa fa-envelope"></i></label>
+              <input type="email" placeholder="Email" name="email">
+              <label><i class="fa fa-envelope"></i></label>
+              <input type="text" placeholder="Enter Otp" name="eotp">
+              
+              
+            
+              <button type="submit">sign in</button>
+            </form>
+            <span>Create Your Account <a href="{% url 'signuppage' %}" title="">Sign Up</a></span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static '/chef/js/jquery.js' %}"></script> 
+<script src="{% static '/chef/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/chef/js/custom.js' %}"></script>
+
+
+</body>
+</html>

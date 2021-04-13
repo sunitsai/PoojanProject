@@ -1,0 +1,143 @@
+
+
+        <!-- CONTENT + SIDEBAR -->
+        <div class="main-wrapper clearfix">
+            <div class="site-pagetitle jumbotron">
+                <div class="container text-center">
+                    <h3>Goshop Products</h3>
+
+                    <!-- Breadcrumbs -->
+                    <div class="breadcrumbs">
+                        <div class="breadcrumbs text-center">
+                            <i class="fa fa-home"></i>
+                            <span><a href="index.html">Home</a></span>
+                            <i class="fa fa-arrow-circle-right"></i>
+                            <span class="current">Checkout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container theme-container">
+                <main id="main-content" class="main-container" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                    <article itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        {% if keyc %}
+                        {% if keyp %}
+                        <!-- Main Content of the Post -->
+                        <div class="entry-content" itemprop="articleBody">
+                            <div class="woocommerce checkout">
+                                
+                                    <div class="col2-set clearfix" id="customer_details">
+                                        <div class="col-1 col-lg-6 col-sm-6 border">
+                                            <h4 class="cart-title-highlight title-3">Billing Details</h4>
+                                            <div class="row"> 
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label>First Name :</label><input class="form-control" type="text" name="fname" value="{{keyc.Firstname}}"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label>Last Nane :</label><input class="form-control" type="text" name="lname" value="{{keyc.Lastname}}"></div>
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group"><label>Address :</label><input class="form-control" type="text" name="address" value="{{keyc.Address}}"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group selectpicker-wrapper">
+                                                        <label>State :</label> <input class="form-control" type="text" name="state" value="{{keyc.State}}"> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group selectpicker-wrapper">
+                                                        <label>City :</label>  <input class="form-control" type="text" name="city" value="{{keyc.City}}">
+                                                    </div>
+                                                </div>
+                                                                               
+                                                <div class="col-md-6">
+                                                    <div class="form-group"><label>Contact Number :</label><input class="form-control" type="text" name="contact" value="{{keyc.Contact}}"></div>
+                                                </div>
+                                                       
+                                            </div>
+                                        </div>
+                                      
+                                    <div id="order_review" class="woocommerce-checkout-review-order ">
+                                        <div class="col-lg-6 col-sm-6 border">
+                                            <div class="chck-ttl">
+                                                <h4 id="order_review_heading" class="cart-title-highlight title-3">Your order</h4>
+                                                <table class="shop_table woocommerce-checkout-review-order-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="product-name">Product</th>
+                                                            <th class="product-total">Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    {% for i in keyp %}  
+                                     
+                                                    <tbody>
+                                                        <tr class="cart_item">
+                                                            <td class="product-name">{{i.Productname}} <strong class="product-quantity">&times; {{i.Qunatity}}</strong></td>
+                                                            <td class="product-total"><b class="amount">{{i.Total}}</b></td>
+                                                        </tr>
+                                                       
+                                                    </tbody>
+                                                    {% endfor %}
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Sub Total:</th>
+                                                            <td><span class="drk-gry">{{sub_total}}</span></td>
+                                                        </tr>
+
+                                                        <tr class="cart-discount">
+                                                            <th>Shipping Charge :</th>
+                                                            <td><b class="drk-gry">Free Shipping</b></td>
+                                                        </tr>
+                                                        <tr class="order-total">
+                                                            <th>Order Total</th>
+                                                            <td><b class="amount">{{sub_total}}</b> </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div id="payment" class="col-lg-6 col-sm-6 border woocommerce-checkout-payment">
+                                            <h4 class="cart-title-highlight title-3">Your Payment</h4>
+
+                                            <div class="woocommerce-checkout-payment-inner">
+                                                
+                                                    <li class="payment_method_paypal">
+                                                        <div class="form-group">
+                                                            <label class="radio-inline"> <input type="radio" value="" name="payment_method"> <span> Paytm </span>  </label>
+                                                        </div>
+                                                        <div class="payment_box payment_method_paypal">
+                                                            <p> <strong> Pay via PayPal; you can pay with your credit card if you don&#8217;t have a PayPal account. </strong> </p>
+                                                        </div>
+                                                    </li>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="wc-proceed-to-checkout text-center">
+                                        <form method="post" action="{% url 'pay' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="sub_total" value="{{sub_total}}">
+                                                <i class="fa fa-check-circle"></i><b><button type="submit" color="orange" >Process To Checkout</button></b>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                
+                               
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+
+          
+            <div class="clear"></div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+    </body>
+</html>
